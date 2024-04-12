@@ -5,12 +5,12 @@
 function fnParseScanResult(result){
   // 扫码结果有效格式:
   //    旧的：AWWWS;产品ID;SN
-  //    新的：awwws.cn/#/scan?sn=AD2207AF9B4B-5
+  //    新的：awwws.cn/scan?sn=AD2207AF9B4B-5
   var ret = {
     code    : 1, // 结果标识: 0=成功; 1=失败
     msg     : '', // 信息提示
     odReg   : /AWWWS;.*?;(.+)$/i, // 匹配：旧的：AWWWS;产品ID;SN
-    nwreg   : /awwws\.cn.*\?sn\=(.+)$/i, // 匹配：新的：awwws.cn/#/scan?sn=AD2207AF9B4B-5
+    nwreg   : /.*\?sn\=(.+)$/i, // 匹配：新的：awwws.cn/scan?sn=AD2207AF9B4B-5
     odMts   : '', // 旧的: 匹配结果
     nwMts   : '', // 新的: 匹配结果
     snType  : '', // 匹配类型: old=旧规则; new=新规则
